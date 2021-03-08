@@ -1,0 +1,19 @@
+<h1> Edit Your Podcast Submission </h1>
+
+<% if @errors %>
+<% @errors.each do |error| %>
+<%= error %><br/>
+    <% end %>
+<% end %>
+
+<%= form_for @podcast do |f| %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %> <br/>
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description %> <br/>
+    <%= f.label :length, "Length"%>
+    <%= f.text_field :length %> <br/>
+    <%= f.label :mood_id, "Mood" %>
+    <%= f.collection_select :mood_id, @moods, :id, :feeling %> <br/>
+    <%= f.submit %> <br/>
+<% end %>

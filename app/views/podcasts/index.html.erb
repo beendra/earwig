@@ -1,0 +1,4 @@
+<h1>Podcasts</h1>
+<% @podcasts.each do |podcast| %>
+<%= link_to podcast.title, podcast_path(podcast) %> <br/>
+<% end %>
