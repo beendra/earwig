@@ -27,10 +27,10 @@ users.each { |user| User.create(user) }
 
 
 podcasts = [
-    {title: "Joe Budden Podcast", description: "Hip-hop/Comedy", length: "long", mood_id: 1},
-    {title: "Joe Rogan", description: "Comedy/Conspiracy", length:"long", mood_id: 4 },
-    {title: "Science Time", description: "Sci-Fi/Short stories", length: "short", mood_id:4},
-    {title: " Plants with bob ", description: "Nature/Outdoor topics ", length:"average", mood_id:2}
+    {title: "Joe Budden Podcast", description: "Hip-hop/Comedy", length: "Long", mood_id: 1},
+    {title: "Joe Rogan", description: "Comedy/Conspiracy", length: "Long", mood_id: 4 },
+    {title: "Science Time", description: "Sci-Fi/Short stories", length: "Short", mood_id:4},
+    {title: " Plants with bob ", description: "Nature/Outdoor topics ", length: "Average", mood_id:2}
   ]
   
   podcasts.each {|podcast| Podcast.create(podcast)}

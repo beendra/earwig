@@ -34,6 +34,7 @@ class PodcastsController < ApplicationController
     def update
         @podcast = Podcast.find(params[:id])
         if @podcast.valid?
+            @podcast.update(podcast_params)
             redirect_to podcast_path(@podcast)
         else 
             flash[:errors] = @podcast.errors.full_messages
@@ -47,4 +48,5 @@ class PodcastsController < ApplicationController
     def podcast_params
         params.require(:podcast).permit(:title, :description, :length, :mood_id)
     end
+    
 end

@@ -1,0 +1,4 @@
+<h1>Select a Mood:</h1>
+<% @moods.each do |m| %>
+<%= link_to m.feeling, mood_path(m) %><br/>
+<% end %>
