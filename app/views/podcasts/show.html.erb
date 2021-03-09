@@ -1,4 +1,9 @@
 <h1> <%= @podcast.title %> </h1>
+
+<%if @podcast.image.attached? %>
+<%= image_tag @podcast.image.variant(resize_to_fit: [300, 200])%><br/>
+<%end%>
+
 <p> Description: <%= @podcast.description %> </p>
 <p> Length: <%= @podcast.length %> </p>
 <p> Mood: <%= @s_moods %> </p>

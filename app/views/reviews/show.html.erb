@@ -1,3 +1,11 @@
 <h1> Review for <%= @title %> </h1>
 <p> <%= @review.content %> </p>
 <p> <%= link_to "Edit Page", edit_review_path(@review) %> </p>
+
+<% if user_signed_in? %>
+<% if @review.liked?(current_user) %>
+        <%= button_to "Like", like_path(@review), method: "put", disabled: true %>
+    <% else %>
+        <%= button_to "Like", like_path(@review), method: "put" %>
+    <% end %>
+<% end %>

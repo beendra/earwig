@@ -8,6 +8,8 @@ class Podcast < ApplicationRecord
 
   validates :length,presence: true, inclusion: { in: %w(Long Average Short), message: "%{value} must be Long, Average, or Short" }
 
+  has_one_attached :image, :dependent => :destroy
+
   def show_mood
     s_moods = mood.feeling
   end

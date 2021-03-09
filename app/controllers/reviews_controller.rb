@@ -35,7 +35,11 @@ class ReviewsController < ApplicationController
             redirect_to edit_review_path
         end
     end
-    
+
+    def like
+        @review = Review.find(params[:id])
+        Like.create(user_id: current_user.id, review_id: @review.id)
+    end
 
     private
 
