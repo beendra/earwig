@@ -15,11 +15,11 @@ moods = [
 moods.each {|mood| Mood.create(mood)}
 
 users = [
-  {username: "Kamala Khan", password: "abc123",email: "Kamala@yahoo.com"},
-  {username: "Doreen Green", password: "def456", email: "Doreen@yahoo.com"},
-  {username: "Gwen Stacy", password: "ghi789",email: "Gwen@yahoo.com" },
-  {username: "Janet Van Dyne", password: "jkl012",email: "Janet@yahoo.com"},
-  {username: "Wanda Maximoff", password: "mno345",email: "Wanda@yahoo.com"}
+  {username: "Kamala Khan", password_digest: "abc123",email: "Kamala@yahoo.com"},
+  {username: "Doreen Green", password_digest: "def456", email: "Doreen@yahoo.com"},
+  {username: "Gwen Stacy", password_digest: "ghi789",email: "Gwen@yahoo.com" },
+  {username: "Janet Van Dyne", password_digest: "jkl012",email: "Janet@yahoo.com"},
+  {username: "Wanda Maximoff", password_digest: "mno345",email: "Wanda@yahoo.com"}
 ]
 
 users.each { |user| User.create(user) }
