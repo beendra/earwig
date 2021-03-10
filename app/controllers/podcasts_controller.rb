@@ -23,6 +23,7 @@ class PodcastsController < ApplicationController
     def show
         @podcast = Podcast.find(params[:id])
         @s_moods = @podcast.show_mood
+        @add = @current_user.add_fave
     end
 
     def edit
@@ -39,6 +40,20 @@ class PodcastsController < ApplicationController
         else 
             flash[:errors] = @podcast.errors.full_messages
             redirect_to edit_podcast_path
+        end
+    end
+
+    def favorite
+        type = params[:type]
+        if type == "favorite"
+        current_user.favorites << @podcast
+        redirect_to :back, notice: 'You favorited #{@recipe.name}'
+        elsif type == "unfavorite"
+        current_user.favorites.delete(@podcast)
+        redirect_to :back, notice: 'Unfavorited #{@podcast.title}'
+        else
+        # Type missing, nothing happens
+        redirect_to :back, notice: 'Nothing happened.'
         end
     end
     

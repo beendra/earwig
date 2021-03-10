@@ -14,4 +14,9 @@ class Podcast < ApplicationRecord
     s_moods = mood.feeling
   end
 
+  def add_fave
+    @podcast = Podcast.find(1)
+    @current_user.favorites << @podcasts
+end
+
 end

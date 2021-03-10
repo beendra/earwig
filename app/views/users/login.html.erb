@@ -1,10 +1,27 @@
-<h1>Login to Earwig</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="users.scss">
+    <meta charset="UTF-8">
+    <meta name="description" content="Podcast review website">
+    <meta name="keywords" content="Podcasts, Reviews, Community">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earwig</title>
+</head>
+<body>
+<header><h1>Login to Earwig</h1></header>
+<p>
+    <%= form_tag "/handle_login"  do %>
+    <%= label_tag :username, "Enter Username" %>
+    <%= text_field_tag :username %><br/>
+    <%= label_tag :password, "Password" %>
+    <%= password_field_tag :password %><br/>
+    <%= submit_tag "Login" %>
+    <% end %> 
+</p>   
+</body>
+</html>
 
-<%= form_tag "/handle_login"  do %>
-<%= label_tag :username, "Enter Username" %>
-<%= text_field_tag :username %><br/>
-<%= label_tag :password, "Password" %>
-<%= password_field_tag :password %><br/>
-<%= submit_tag "Login" %>
-<% end %>
+
 

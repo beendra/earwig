@@ -9,4 +9,10 @@ class User < ApplicationRecord
     has_secure_password
     has_one_attached :image, :dependent => :destroy
 
+
+    def favorited_podcast
+        @favorite = self.favorites
+        @favorite.map {|f| f.podcast}
+    end
+
 end

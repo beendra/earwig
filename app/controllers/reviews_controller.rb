@@ -44,6 +44,15 @@ class ReviewsController < ApplicationController
     def like
         @review = Review.find(params[:id])
         Like.create(user_id: current_user.id, review_id: @review.id)
+        return review_path(@review)
+    end
+
+    def destroy
+        if !(like)
+            flash[:notice] = "Cannot unlike"
+        else
+            like.destroy
+        end
     end
 
     private
