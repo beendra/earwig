@@ -6,7 +6,7 @@ class User < ApplicationRecord
     has_many :reviewed_podcasts, source: :podcast, through: :reviews
     has_many :likes
     has_many :liked_reviews, source: :review, through: :likes
-
+    has_secure_password
     has_one_attached :image, :dependent => :destroy
 
 end
