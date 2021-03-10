@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
     skip_before_action :authorized, only: [:login, :handle_login]
 
+
+
     def login
     end
 
@@ -9,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect_to user_path
+            redirect_to '/'
         else
             redirect_to login_path
         end
@@ -30,7 +32,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        # @user = User.find(params[:id])
+        @user = User.find(current_user.id)
     end
 
     def edit
