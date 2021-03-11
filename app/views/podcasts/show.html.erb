@@ -20,9 +20,12 @@
 <p> Length: <%= @podcast.length %> </p>
 <p> Mood: <%= @s_moods %> </p>
 <% if @current_user %>
-<p><%= link_to "Review this podcast", new_review_path%></p>
-  <%= link_to "favorite",   podcast_path(@current_user, type: "favorite"), method: :put %>
-  <%= link_to "unfavorite", podcast_path(@current_user, type: "unfavorite"), method: :put %>
+<%= link_to "Review this podcast", new_review_path%></p>
+<%= button_to 'Favorite', {:controller => "favorites", 
+                            :action => "create",
+                            :favorite => {:user_id => @current_user.id, 
+                            :podcast_id => @podcast.id}, 
+                            :method => "post"} %>
 <% end %>
 <p> <%= link_to "Edit Page", edit_podcast_path(@podcast) %> </p>
 </body>

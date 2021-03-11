@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    skip_before_action :authorized, only: [:login, :handle_login]
+    skip_before_action :authorized, only: [:login, :handle_login, :new]
 
 
 
@@ -28,12 +28,12 @@ class UsersController < ApplicationController
 
     def create 
         user = User.create(user_params)
-        redirect_to user_path(user)
+        redirect_to user_path(@current_user)
     end
 
     def show
         # @user = User.find(params[:id])
-        @user = User.find(current_user.id)
+        @user = User.find(@current_user.id)
         @favorite = @user.my_faves
     end
 

@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   resources :reviews do
     resources :likes
   end
-  resources :podcasts do 
-  resources :favorites
-  end
+  resources :podcasts  
+  resources :favorites, except: [:destroy]
   resources :moods
   resources :users
 
 
   put '/review/:id/like', to: 'reviews#like', as: 'like'
+  
+  # post '/new_favorite', to: 'favorites#new_favorite', as: 'new_favorite'
+  delete '/favorites/:id', to: 'favorites#destroy', as: 'destroy'
 
   get '/login', to: 'users#login', as: 'login'
   post '/handle_login', to: 'users#handle_login'

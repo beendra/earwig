@@ -1,23 +1,24 @@
 class FavoritesController < ApplicationController
 
+    def index
+        @favorites = Favorite.all
+    end
+
     def new
         @favorite = Favorite.new
         @errors = flash[:errors]
     end
 
     def create 
+        # @podcast = Podcast.find(params[:id])
         favorite = Favorite.create(favorite_params)
-            if favorite.valid?
-        redirect_to favorite_path(favorite)
-            else 
-                flash[:errors] = favorite.errors.full_messages
-                redirect_to new_favorite_path
-            end
+        redirect_to user_path(@current_user)
     end
 
     def edit
         @favorite = Favorite.find(params[:id])
         @errors = flash[:errors]
+        @bye = @current_user.remove
     end
     
     def update
@@ -32,6 +33,11 @@ class FavoritesController < ApplicationController
         end
     end
     
+    def destroy 
+        favorite = Favorite.find(params[:id])
+        favorite.destroy
+        redirect_to edit_favorite_path
+    end
 
     private
 
