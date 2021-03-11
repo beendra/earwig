@@ -1,25 +1,9 @@
 class UsersController < ApplicationController
 
-    skip_before_action :authorized, only: [:login, :handle_login, :new]
+    skip_before_action :authorized, only: [:login, :handle_login, :new,:create]
 
 
-
-    def login
-    end
-
-    def handle_login
-        @user = User.find_by(username: params[:username])
-        if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
-            redirect_to '/'
-        else
-            redirect_to login_path
-        end
-    end
-
-    def logout
-        session[:user_id] = nil
-        redirect_to login_path
+    def index #
     end
 
     def new
@@ -27,8 +11,9 @@ class UsersController < ApplicationController
     end
 
     def create 
+        
         user = User.create(user_params)
-        redirect_to user_path(@current_user)
+        redirect_to user_path(user)
     end
 
     def show
@@ -52,6 +37,30 @@ class UsersController < ApplicationController
         #   render 'edit'
         # end
         redirect_to user_path(@user)
+    end
+
+    def login
+    end
+
+    def handle_login
+        # byebug
+
+        @user = User.find_by(username: params[:username])
+
+
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            
+
+        redirect_to '/'
+        else
+            redirect_to login_path
+        end
+    end
+
+    def logout
+        session[:user_id] = nil
+        redirect_to login_path
     end
     
 

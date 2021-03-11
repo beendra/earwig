@@ -2,7 +2,7 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :podcast
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :user_likes, source: :user, through: :likes
 
   def p_title
