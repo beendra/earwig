@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   root to: 'users#show', as: 'earwig'
 
-  resources :favorites
   resources :reviews do
     resources :likes
   end
-  resources :podcasts
+  resources :podcasts do 
+  resources :favorites
+  end
   resources :moods
   resources :users
 

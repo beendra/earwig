@@ -1,23 +1,21 @@
 class ReviewsController < ApplicationController
 
     def index
-        @reviews = @current_user.reviews
+        @reviews = Review.all
     end
     
     def new
         @review = Review.new
-        @errors = flash[:errors]
     end
 
     def create 
-        @review = @current_user.reviews.create(review_params)
-        # review = Review.create(review_params)
-            if review.valid?
-        redirect_to review_path(@review)
-            else 
-                flash[:errors] = @review.errors.full_messages
-                redirect_to new_review_path
-            end
+        @review = @ecurrent_user.reviews.create(review_params)
+        #     if @review.valid?
+        redirect_to reviews_path(@review)
+            # else 
+            #     flash[:errors] = @review.errors.full_messages
+            #     redirect_to new_review_path
+            # end
     end
 
     def show
@@ -32,13 +30,13 @@ class ReviewsController < ApplicationController
     
     def update
         @review = Review.find(params[:id])
-        if @review.valid?
-            @review.update(review_params)
+        # if @review.valid?
+        #     @review.update(review_params)
             redirect_to review_path(@review)
-        else 
-            flash[:errors] = @review.errors.full_messages
-            redirect_to edit_review_path
-        end
+        # else 
+        #     flash[:errors] = @review.errors.full_messages
+        #     redirect_to edit_review_path
+        # end
     end
 
     def like
@@ -58,7 +56,7 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.require(:review).permit(:content)
+        params.require(:review).permit(:content,:user_id, :podcast_id)
     end
 
 end

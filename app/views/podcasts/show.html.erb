@@ -19,7 +19,11 @@
 <p> Description: <%= @podcast.description %> </p>
 <p> Length: <%= @podcast.length %> </p>
 <p> Mood: <%= @s_moods %> </p>
-<p> <%= link_to "Add to Favorites", %></p>
+<% if @current_user %>
+<p><%= link_to "Review this podcast", new_review_path%></p>
+  <%= link_to "favorite",   podcast_path(@current_user, type: "favorite"), method: :put %>
+  <%= link_to "unfavorite", podcast_path(@current_user, type: "unfavorite"), method: :put %>
+<% end %>
 <p> <%= link_to "Edit Page", edit_podcast_path(@podcast) %> </p>
 </body>
 </html>

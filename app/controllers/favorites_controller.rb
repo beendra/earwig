@@ -23,6 +23,7 @@ class FavoritesController < ApplicationController
     def update
         @favorite = Favorite.find(params[:id])
         if @favorite.valid?
+            current_user.favorites << @favorite
             @favorite.update(favorite_params)
             redirect_to favorite_path(@favorite)
         else 
@@ -35,7 +36,7 @@ class FavoritesController < ApplicationController
     private
 
     def favorite_params
-        params.require(:favorite).permit(:)
+        params.require(:favorite).permit(:user_id, :podcast_id)
     end
 
 end

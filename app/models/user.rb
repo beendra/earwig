@@ -10,7 +10,7 @@ class User < ApplicationRecord
     has_one_attached :image, :dependent => :destroy
 
 
-    def favorited_podcast
+    def my_faves
         @favorite = self.favorites
         @favorite.map {|f| f.podcast}
     end

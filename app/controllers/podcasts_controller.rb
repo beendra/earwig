@@ -23,7 +23,8 @@ class PodcastsController < ApplicationController
     def show
         @podcast = Podcast.find(params[:id])
         @s_moods = @podcast.show_mood
-        @add = @current_user.add_fave
+        #@add = current_user.add_fave
+        
     end
 
     def edit
@@ -43,25 +44,25 @@ class PodcastsController < ApplicationController
         end
     end
 
-    def favorite
-        type = params[:type]
-        if type == "favorite"
-        current_user.favorites << @podcast
-        redirect_to :back, notice: 'You favorited #{@recipe.name}'
-        elsif type == "unfavorite"
-        current_user.favorites.delete(@podcast)
-        redirect_to :back, notice: 'Unfavorited #{@podcast.title}'
-        else
-        # Type missing, nothing happens
-        redirect_to :back, notice: 'Nothing happened.'
-        end
-    end
+    # def favorite
+    #     type = params[:type]
+    #     if type == "favorite"
+    #     current_user.favorites << @podcast
+    #     redirect_to :back, notice: 'You favorited #{@podcast.name}'
+    #     elsif type == "unfavorite"
+    #     current_user.favorites.delete(@podcast)
+    #     redirect_to :back, notice: 'Unfavorited #{@podcast.title}'
+    #     else
+    #     # Type missing, nothing happens
+    #     redirect_to :back, notice: 'Nothing happened.'
+    #     end
+    # end
     
 
     private
 
     def podcast_params
         params.require(:podcast).permit(:title, :description, :length, :mood_id, :image)
-    end
+    end 
     
 end

@@ -12,12 +12,6 @@
 <body>
 <header><h1>Review this Podcast</h1></header>
 
-<% if @errors %>
-<% @errors.each do |error| %>
-<%= error %><br/>
-    <% end %>
-<% end %>
-
 <%= form_for @review do |f| %>
     <%= f.label :content, "Your Review:" %>
     <%= f.text_area :content %> <br/>
