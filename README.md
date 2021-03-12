@@ -2,7 +2,7 @@
 
 A Flatiron School Phase 2 Project utilizing Ruby on Rails and multiple models and associations. Earwig is a podcast review application where a User can create an account, login and browse podcasts. Podcasts can then be added to a User's Favorites and Users can like other User's podcast reviews. 
 
-#To Install
+# To Install
     > $ git clone 
     > $ cd earwig
     > $ bundle install
