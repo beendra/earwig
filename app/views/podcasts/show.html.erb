@@ -9,7 +9,7 @@
 <p> Length: <%= @podcast.length %> </p>
 <p> Mood: <%= @s_moods %> </p>
 <% @reviews.each do |r|%>
-<p><%= r %></p>
+<p><%= link_to r, review_path %></p>
 <%end%>
 <% @reviewer.each do |r|%>
 <p><%= r %></p>
