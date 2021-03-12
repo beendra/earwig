@@ -1,8 +1,0 @@
-<h1> Welcome! <%= @current_user.username %> </h1>
-<h2> Edit Favorite Podcasts: </h2>
-<% @current_user.favorited_podcasts.each do |fave| %>
-<%= fave.title button_to "Remove", {:controller => "favorites", 
-                            :action => "destroy",
-                            :podcast_id => @podcast.id, 
-                            :method => "delete"}  %><br/>
-<% end %>
