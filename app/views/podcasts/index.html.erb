@@ -1,7 +1,6 @@
-
-<header><h1>Podcasts</h1></header>
+<h1>Podcasts</h1>
 <% @podcasts.each do |podcast| %>
-<%= link_to podcast.title, podcast_path(podcast) %> <br/>
+<ul><li><%= link_to podcast.title, podcast_path(podcast) %></li></ul> 
 <% end %>
-
-<h2><%= link_to "Profile", user_path(@current_user) %> </h2>
+<br/>
+<p><%= link_to "Back to Profile", user_path(@current_user) %> </p>

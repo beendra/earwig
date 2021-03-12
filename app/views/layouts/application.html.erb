@@ -12,13 +12,28 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+<body>
+<div id = "bg"></div>   
+<% if @current_user.image.attached? %>
+    <%= image_tag @current_user.image.variant(resize_to_fit: [300, 200])%>
+    <%end%>
+<div class="header"></header>
+
+
+
   <% if logged_in? %>
     <p>Welcome <%= @current_user.username %>.</p>
     <%= button_to "Logout", "/logout", method: "delete" %>
   <% else %>
     <p>Login or <%= link_to "Sign-Up", new_user_path %> </p>
   <% end %>
+
+<%= render partial: "shared/navbar" %>
+
+
+  
+  <div class= "container">
     <%= yield %>
+  </div>
   </body>
 </html>

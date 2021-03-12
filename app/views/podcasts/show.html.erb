@@ -1,5 +1,4 @@
-
-<header><h1> <%= @podcast.title %> </h1></header>
+<h1> <%= @podcast.title %> </h1>
 
 <%if @podcast.image.attached? %>
 <%= image_tag @podcast.image.variant(resize_to_fit: [300, 200])%><br/>
@@ -8,7 +7,7 @@
 <p> Description: <%= @podcast.description %> </p>
 <p> Length: <%= @podcast.length %> </p>
 <p> Mood: <%= @s_moods %> </p>
-<% @reviews.each do |r|%>
+<% @read.each do |r|%>
 <p><%= link_to r, review_path %></p>
 <%end%>
 <% @reviewer.each do |r|%>

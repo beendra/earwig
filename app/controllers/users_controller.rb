@@ -3,7 +3,8 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: [:login, :handle_login, :new,:create]
 
 
-    def index #
+    def index 
+        @users = User.all
     end
 
     def new
@@ -57,7 +58,6 @@ class UsersController < ApplicationController
         session[:user_id] = nil
         redirect_to login_path
     end
-    
 
     private
 

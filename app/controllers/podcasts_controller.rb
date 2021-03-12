@@ -23,7 +23,7 @@ class PodcastsController < ApplicationController
     def show
         @podcast = Podcast.find(params[:id])
         @s_moods = @podcast.show_mood
-        @reviews = @podcast.show_reviews
+        @read = @podcast.show_reviews
         @reviewer = @podcast.show_reviewers       
     end
 
@@ -58,7 +58,10 @@ class PodcastsController < ApplicationController
         # redirect_to :back, notice: 'Nothing happened.'
         # end
     end
-    
+
+    def random
+        @podcasts = Podcast.all.sample
+    end
 
     private
 

@@ -16,10 +16,10 @@ class User < ApplicationRecord
         @favorite = self.favorites
         @favorite.map {|f| f.podcast}
     end
+    
     def reviewed 
         @reviewed = self.reviews
         # @reviewed.map {|r| r.content}
-
     end
 
 end

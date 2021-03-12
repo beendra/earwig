@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :moods
   resources :users
 
+  get '/random_podcast', to: 'podcasts#random', as: 'random_pod'
 
   put '/review/:id/like', to: 'reviews#like', as: 'like'
   
