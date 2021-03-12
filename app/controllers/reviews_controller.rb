@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
     def like
         @review = Review.find(params[:id])
         Like.create(user_id: current_user.id, review_id: @review.id)
-        return review_path(@review)
+        redirect_to earwig_path
     end
 
     def destroy

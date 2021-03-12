@@ -3,7 +3,7 @@
 <p> <%= link_to "Edit Page", edit_review_path(@review) %> </p>
 
 <% if logged_in? %>
-<% if @review.liked?(current_user) %>
+<% if @review.liked?(@current_user) %>
         <%= button_to "Like", like_path(@review), method: "put", disabled: true %>
     <% else %>
         <%= button_to "Like", like_path(@review), method: "put" %>
