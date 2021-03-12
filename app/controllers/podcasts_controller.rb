@@ -23,8 +23,8 @@ class PodcastsController < ApplicationController
     def show
         @podcast = Podcast.find(params[:id])
         @s_moods = @podcast.show_mood
-        #@add = current_user.add_fave
-        
+        @reviews = @podcast.show_reviews
+        @reviewer = @podcast.show_reviewers       
     end
 
     def edit

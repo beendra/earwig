@@ -20,6 +20,7 @@ class UsersController < ApplicationController
         # @user = User.find(params[:id])
         @user = User.find(@current_user.id)
         @favorite = @user.my_faves
+        @reviewed = @user.reviewed
     end
 
     def edit
@@ -43,15 +44,9 @@ class UsersController < ApplicationController
     end
 
     def handle_login
-        # byebug
-
         @user = User.find_by(username: params[:username])
-
-
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            
-
         redirect_to '/'
         else
             redirect_to login_path

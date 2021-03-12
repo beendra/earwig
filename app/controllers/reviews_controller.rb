@@ -1,21 +1,13 @@
 class ReviewsController < ApplicationController
-
-    def index
-        @reviews = Review.all
-    end
-    
     def new
         @review = Review.new
+        @podcasts = Podcast.all
+
     end
 
     def create 
-        @review = @ecurrent_user.reviews.create(review_params)
-        #     if @review.valid?
-        redirect_to reviews_path(@review)
-            # else 
-            #     flash[:errors] = @review.errors.full_messages
-            #     redirect_to new_review_path
-            # end
+        @review = @current_user.reviews.create(review_params)
+        redirect_to podcasts_path
     end
 
     def show
@@ -32,7 +24,7 @@ class ReviewsController < ApplicationController
         @review = Review.find(params[:id])
         # if @review.valid?
         #     @review.update(review_params)
-            redirect_to review_path(@review)
+        redirect_to podcasts_path
         # else 
         #     flash[:errors] = @review.errors.full_messages
         #     redirect_to edit_review_path

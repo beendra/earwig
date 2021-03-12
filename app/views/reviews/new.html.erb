@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="users.scss">
-    <meta charset="UTF-8">
-    <meta name="description" content="Podcast review website">
-    <meta name="keywords" content="Podcasts, Reviews, Community">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earwig</title>
-</head>
-<body>
+
 <header><h1>Review this Podcast</h1></header>
 
 <%= form_for @review do |f| %>
     <%= f.label :content, "Your Review:" %>
     <%= f.text_area :content %> <br/>
+
+    <%= f.label :podcast_id%>
+    <%= f.collection_select :podcast_id, @podcasts, :id, :title%>
+
     <%= f.submit %> <br/>
 <% end %>
-</body>
-</html>

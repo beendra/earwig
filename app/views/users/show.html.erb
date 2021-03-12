@@ -1,5 +1,4 @@
 
-
 <header><h1> Welcome! <%= @user.username %> </h1></header>
 <%if @user.image.attached? %>
     <%= image_tag @user.image.variant(resize_to_fit: [300, 200])%>
@@ -8,5 +7,10 @@
     <% @favorite.each do |fave| %>
     <%= fave.title %><br>
     <% end %>
-<%# <%= link_to "Edit Your Favorites", edit_favorite_path(@favorite)%>
-<p> <%= link_to "Edit Your Account", edit_user_path(@user) %> </p>
+
+    <h2>Recent Reviews: </h2>
+        <% @reviewed.each do |r| %>
+    <%= link_to r.content, review_path(r) %><br>
+    <% end %>
+
+<h3> <%= link_to "Edit Your Account", edit_user_path(@user) %> </h3>

@@ -14,6 +14,14 @@ class Podcast < ApplicationRecord
     s_moods = mood.feeling
   end
 
+  def show_reviews #
+    @show_review = self.reviews.map {|r| r.content}
+  end
+
+  def show_reviewers
+    @show_reviewer = self.reviewers.map {|r| r.username}
+  end
+
 #   def add_fave
 #     @podcast = Podcast.find(1)
 #     current_user.favorited_podcasts << @podcast

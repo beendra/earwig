@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="users.scss">
-    <meta charset="UTF-8">
-    <meta name="description" content="Podcast review website">
-    <meta name="keywords" content="Podcasts, Reviews, Community">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earwig</title>
-</head>
-<body>
+
 <header><h1> <%= @podcast.title %> </h1></header>
 
 <%if @podcast.image.attached? %>
@@ -19,8 +8,15 @@
 <p> Description: <%= @podcast.description %> </p>
 <p> Length: <%= @podcast.length %> </p>
 <p> Mood: <%= @s_moods %> </p>
+<% @reviews.each do |r|%>
+<p><%= r %></p>
+<%end%>
+<% @reviewer.each do |r|%>
+<p><%= r %></p>
+<%end%>
+
 <% if @current_user %>
-<%= link_to "Review this podcast", new_review_path%></p>
+<%= link_to "Review this podcast", new_review_path(@review)%></p>
 <%= button_to 'Favorite', {:controller => "favorites", 
                             :action => "create",
                             :favorite => {:user_id => @current_user.id, 
@@ -28,5 +24,3 @@
                             :method => "post"} %>
 <% end %>
 <p> <%= link_to "Edit Page", edit_podcast_path(@podcast) %> </p>
-</body>
-</html>
