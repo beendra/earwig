@@ -7,9 +7,13 @@
 <p> Description: <%= @podcast.description %> </p>
 <p> Length: <%= @podcast.length %> </p>
 <p> Mood: <%= @s_moods %> </p>
+<br/>
+<h2>Reviews:</h2>
 <% @read.each do |r|%>
 <p><%= link_to r, review_path %></p>
 <%end%>
+<br>
+<h3>Users Who Favorited This Podcast:</h3>
 <% @reviewer.each do |r|%>
 <p><%= r %></p>
 <%end%>

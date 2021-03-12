@@ -1,8 +1,8 @@
 <h1> Community Reviews: </h1>
-<ol>
+<ul>
     <% @reviews.each do |review| %>
     <li>
         <%= link_to review.content, review_path(review) %>
     </li>
     <% end %>
-</ol>
+</ul>

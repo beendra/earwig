@@ -14,20 +14,22 @@
 
 <body>
 <div id = "bg"></div>   
-<% if @current_user.image.attached? %>
-    <%= image_tag @current_user.image.variant(resize_to_fit: [300, 200])%>
-    <%end%>
+<%# <% if @current_user.image.attached? %>
+    <%# <%= image_tag @current_user.image.variant(resize_to_fit: [300, 200])%> 
+    <%# <% else %> 
+    <%# <% image_tag 'earwig.png' %> 
+    <%# <%end %> 
 <div class="header"></header>
 
 
-
+<div class="htext">
   <% if logged_in? %>
     <p>Welcome <%= @current_user.username %>.</p>
     <%= button_to "Logout", "/logout", method: "delete" %>
   <% else %>
-    <p>Login or <%= link_to "Sign-Up", new_user_path %> </p>
+    <p>Login or <%= link_to "Sign-Up", new_user_path, class: "htext" %> </p>
   <% end %>
-
+</div>
 <%= render partial: "shared/navbar" %>
 
 

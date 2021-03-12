@@ -11,3 +11,7 @@ body > #bg {
     position: absolute;
     z-index: -1;
 }
+
+.htext {
+    color: honeydew;
+}
